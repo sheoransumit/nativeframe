@@ -11,9 +11,16 @@ import DetailsScreen from './app/DetailsScreen';//Register
 
 import ModalScreen from './app/ModalScreen';
 // import SettingsScreen from './app/SettingsScreen';
+
+// You can import Ionicons from @expo/vector-icons if you use Expo or
+// react-native-vector-icons/Ionicons otherwise.
 import Ionicons from 'react-native-vector-icons/Ionicons';
 // import { TabNavigator, TabBarBottom } from 'react-navigation';
+import PrivacyScreen from './app/PrivacyScreen';
+import HelpScreen from './app/HelpScreen';
+
 import { TabNavigator, StackNavigator, TabBarBottom, DrawerNavigator } from 'react-navigation';
+
 
 const AuthStack = StackNavigator(
   {
@@ -78,14 +85,7 @@ const RootStack = StackNavigator(
   }
 );
 
-// export default class App extends Component {
-//   render() {
-//     return <RootStack />;
-//   }
-// }
 
-// You can import Ionicons from @expo/vector-icons if you use Expo or
-// react-native-vector-icons/Ionicons otherwise.
 
 class DetailsScreen2 extends React.Component {
   render() {
@@ -168,57 +168,6 @@ const TabStack = TabNavigator(
 );
 
 
-class MyHomeScreen extends React.Component {
-  static navigationOptions = {
-    drawerLabel: 'Home',
-    // drawerIcon: ({ tintColor }) => (
-    //   <Image
-    //     source={require('./chats-icon.png')}
-    //     style={[styles.icon, {tintColor: tintColor}]}
-    //   />
-    // ),
-  };
-
-  componentDidMount(){
-    this.props.navigation.navigate('DrawerToggle');
-  }
-
-  render() {
-    return (
-      <Button
-        onPress={() => this.props.navigation.navigate('Notifications')}
-        title="Go to notifications"
-      />
-    );
-  }
-}
-
-class MyNotificationsScreen extends React.Component {
-
-  static navigationOptions = {
-    drawerLabel: 'Notifications',
-    // drawerIcon: ({ tintColor }) => (
-    //   <Image
-    //     source={require('./notif-icon.png')}
-    //     style={[styles.icon, {tintColor: tintColor}]}
-    //   />
-    // ),
-  };
-
-  componentDidMount(){
-    this.props.navigation.navigate('DrawerToggle');
-  }
-  
-  render() {
-    return (
-      <Button
-        onPress={() => this.props.navigation.goBack()}
-        title="Go back home"
-      />
-    );
-  }
-}
-
 const styles = StyleSheet.create({
   icon: {
     width: 24,
@@ -227,14 +176,17 @@ const styles = StyleSheet.create({
 });
 
 const DrawerStack = DrawerNavigator({
-  Home: {
-    screen: MyHomeScreen,
+  Root: {
+    screen: RootStack,
   },
   Tab: {
     screen: TabStack,
   },
-  Notifications: {
-    screen: MyNotificationsScreen,
+  Privacy: {
+    screen: PrivacyScreen,
+  },
+  Help: {
+    screen: HelpScreen,
   },
 });
 
