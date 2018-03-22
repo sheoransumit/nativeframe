@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, View, Text } from 'react-native';
+import DateTimePicker from './components/DateTimePicker'
 
 export default class DetailsScreen extends Component {
   static navigationOptions = ({ navigation, navigationOptions }) => {
@@ -27,6 +28,7 @@ export default class DetailsScreen extends Component {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Details Screen</Text>
+        <DateTimePicker />
         <Text>itemId: {JSON.stringify(itemId)}</Text>
         <Text>otherParam: {JSON.stringify(otherParam)}</Text>
         <Button

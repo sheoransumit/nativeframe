@@ -1,26 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, Image, Button, View, Text } from 'react-native';
 // import { StackNavigator } from 'react-navigation';
+import { TabNavigator, StackNavigator, TabBarBottom, DrawerNavigator } from 'react-navigation';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import LoginScreen from './app/LoginScreen';//Login
 import RegisterScreen from './app/RegisterScreen';//Register
 import LoginHelpScreen from './app/LoginHelpScreen';//Login-Help
 
-import HomeScreen from './app/HomeScreen';//Login
-import DetailsScreen from './app/DetailsScreen';//Register
-
-import ModalScreen from './app/ModalScreen';
 // import SettingsScreen from './app/SettingsScreen';
-
-// You can import Ionicons from @expo/vector-icons if you use Expo or
-// react-native-vector-icons/Ionicons otherwise.
-import Ionicons from 'react-native-vector-icons/Ionicons';
-// import { TabNavigator, TabBarBottom } from 'react-navigation';
-import PrivacyScreen from './app/PrivacyScreen';
-import HelpScreen from './app/HelpScreen';
-
-import { TabNavigator, StackNavigator, TabBarBottom, DrawerNavigator } from 'react-navigation';
-
 
 const AuthStack = StackNavigator(
   {
@@ -45,7 +33,8 @@ const AuthStack = StackNavigator(
   }
 );
 
-
+import HomeScreen from './app/HomeScreen';
+import DetailsScreen from './app/DetailsScreen';
 const MainStack = StackNavigator(
   {
     Home: {
@@ -70,6 +59,7 @@ const MainStack = StackNavigator(
   }
 );
 
+import ModalScreen from './app/ModalScreen';
 const RootStack = StackNavigator(
   {
     Main: {
@@ -86,59 +76,22 @@ const RootStack = StackNavigator(
 );
 
 
-
-class DetailsScreen2 extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Details!</Text>
-      </View>
-    );
-  }
-}
-
-class HomeScreen2 extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        { /* other code from before here */ }
-        <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Details')}
-        />
-      </View>
-    );
-  }
-}
-
-class SettingsScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        { /* other code from before here */ }
-        <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Details')}
-        />
-      </View>
-    );
-  }
-}
-
-const HomeStack = StackNavigator({
-  Home: { screen: HomeScreen2 },
-  Details: { screen: DetailsScreen2 },
+import HomeIScreen from './app/HomeIScreen';
+import HomeIDetailsIScreen from './app/HomeIDetailsIScreen';
+const HomeIStack = StackNavigator({
+  Home: { screen: HomeIScreen },
+  Details: { screen: HomeIDetailsIScreen },
 });
 
-const SettingsStack = StackNavigator({
-  Settings: { screen: SettingsScreen },
-  Details: { screen: DetailsScreen2 },
+const SettingsIStack = StackNavigator({
+  Settings: { screen: SettingsIScreen },
+  Details: { screen: SettingsIDetailsIScreen },
 });
 
-const TabStack = TabNavigator(
+const TabIStack = TabNavigator(
   {
-    Home: { screen: HomeStack },
-    Settings: { screen: SettingsStack },
+    Home: { screen: HomeIStack },
+    Settings: { screen: SettingsIStack },
   },
   {
     navigationOptions: ({ navigation }) => ({
@@ -166,8 +119,6 @@ const TabStack = TabNavigator(
     swipeEnabled: false,
   }
 );
-
-
 const styles = StyleSheet.create({
   icon: {
     width: 24,
@@ -175,12 +126,15 @@ const styles = StyleSheet.create({
   },
 });
 
+
+import PrivacyScreen from './app/PrivacyScreen';
+import HelpScreen from './app/HelpScreen';
 const DrawerStack = DrawerNavigator({
   Root: {
     screen: RootStack,
   },
   Tab: {
-    screen: TabStack,
+    screen: TabIStack,
   },
   Privacy: {
     screen: PrivacyScreen,
